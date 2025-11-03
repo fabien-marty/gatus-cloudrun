@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Very basic scheduler that runs the config and backup scripts every minute
+# Very basic scheduler that runs the config and backup scripts every 5 minutes
 
 STOP=0
 
@@ -18,7 +18,7 @@ cd "${APP_DIR}" || exit 1
 
 while [ "$STOP" -eq "0" ]; do
     COUNT=0
-    while [ "$STOP" -eq "0" ] && [ "$COUNT" -lt "60" ]; do
+    while [ "$STOP" -eq "0" ] && [ "$COUNT" -lt "300" ]; do
       sleep 1
       COUNT=$((COUNT + 1))
     done
