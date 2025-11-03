@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -x
 # Backup the SQLite database to the GCP / CloudStorage bucket
 # (this script should be run every minute)
 
@@ -56,6 +57,12 @@ if [[ "$GATUS_CLOUDRUN_DB_PATH" =~ ^gs:// ]]; then
 else
     cp -f "${APP_DIR}/data/data.db.backup" "${GATUS_CLOUDRUN_DB_PATH}"
     RES=$?
+fi
+if [ $RES -eq 0 ]; then
+    # Let's add a "by week" backup file
+    WEEK=$(date +%V)
+    echo "Backing up data.db.backup to ${GATUS_CLOUDRUN_DB_PATH}.week${WEEK}..."
+    timeout ${GATUS_CLOUDRUN_GCS_TIMEOUT} gsutil cp "${APP_DIR}/data/data.db.backup" "${GATUS_CLOUDRUN_DB_PATH}.week${WEEK}"
 fi
 if [ $RES -ne 0 ]; then
     echo "Error: Failed to backup the Gatus database file to the GCP / CloudStorage bucket. Exiting."

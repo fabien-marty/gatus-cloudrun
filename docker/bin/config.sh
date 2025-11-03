@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # Get the configuration file from the GCP / CloudStorage bucket
 
 # Create a lock file to prevent multiple executions

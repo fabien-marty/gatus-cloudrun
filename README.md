@@ -50,6 +50,8 @@ storage:
 ```
 
 Cloud Run non-default settings:
+- Container image url: `docker.io/fabienmarty/gatus-cloudrun:0.0.0.post8.dev0_84db63b` (change the version of course)
+- Authentication: "Allow public access"
 - Billing: instance-based (very important!)
 - Minimum number of instances: 1
 - Maximum number of instances: 1
