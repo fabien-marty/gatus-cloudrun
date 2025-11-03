@@ -18,7 +18,7 @@ RUN apt-get update && apt-get -y upgrade && \
     echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \ 
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - && \
     apt-get update && \
-    apt-get install -y sqlite3 google-cloud-cli yamllint && \ 
+    apt-get install -y sqlite3 google-cloud-cli && \
     apt-get clean
 
 RUN useradd -r -d ${APP_DIR} -s /bin/bash ${APP_USER} && \
