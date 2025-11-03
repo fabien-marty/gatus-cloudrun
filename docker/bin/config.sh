@@ -10,7 +10,7 @@ LOCK_FILE="/tmp/config.lock"
 if [ -f "$LOCK_FILE" ]; then
     LOCK_PID=$(cat "$LOCK_FILE")
     if kill -0 "$LOCK_PID" 2>/dev/null; then
-        echo "Backup script is already running (PID: $LOCK_PID). Exiting."
+        echo "Config script is already running (PID: $LOCK_PID). Exiting."
         exit 0
     else
         echo "Stale lock file found. Removing it."
