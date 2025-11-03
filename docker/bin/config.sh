@@ -35,7 +35,6 @@ else
     # Copy from local path
     cp -f "${GATUS_CLOUDRUN_CONFIG_PATH}" "${APP_DIR}/config/config.yml.new" || { echo "Error: Failed to copy the Gatus configuration file. Exiting." && exit 1; }
 fi
-yamllint --no-warnings "${APP_DIR}/config/config.yml.new" || ( echo "Invalid YAML file. Exiting." && exit 1 )
 diff "${APP_DIR}/config/config.yml" "${APP_DIR}/config/config.yml.new" >/dev/null 2>&1 && { echo "No changes in the Gatus configuration file. Exiting." && exit 1; }
 cp -f "${APP_DIR}/config/config.yml.new" "${APP_DIR}/config/config.yml"
 echo "Done"
