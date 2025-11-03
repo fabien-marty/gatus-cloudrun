@@ -56,3 +56,5 @@ Cloud Run non-default settings:
 - Minimum number of instances: 1
 - Maximum number of instances: 1
 - `GATUS_CLOUDRUN_CONFIG_PATH`, `GATUS_CLOUDRUN_DB_PATH`, `GATUS_CLOUDRUN_DB_ALLOW_NOT_FOUND` must be set as environment variables
+
+Note: we produce also a "by week" backup file in the GCS bucket, in the same bucket as the database file, with the name `${GATUS_CLOUDRUN_DB_PATH}.week${WEEK}`, where `WEEK` is the current week number.

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -x
 # Backup the SQLite database to the GCP / CloudStorage bucket
 # (this script should be run every minute)
 
@@ -48,7 +47,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 echo "Done"
-trap 'rm -f "${APP_DIR}/data/data.db.backup"' EXIT
 
 echo "Backing up data.db.backup to ${GATUS_CLOUDRUN_DB_PATH}..."
 if [[ "$GATUS_CLOUDRUN_DB_PATH" =~ ^gs:// ]]; then
