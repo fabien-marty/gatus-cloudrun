@@ -13,7 +13,7 @@ This is a very opinionated docker image for running [Gatus](https://github.com/T
 
 - The Gatus configuration is stored in a GCP / CloudStorage bucket:
     - The configuration is read at startup
-    - The configuration is checked for changes every minute
+    - The configuration is checked for changes every 5 minutes
     - If the configuration has changed, the container is stopped (and restarted by CloudRun)
 
 - The Gatus database is stored in a GCP / CloudStorage bucket as a SQLite file:
